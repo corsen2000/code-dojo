@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117222359) do
+ActiveRecord::Schema.define(version: 20131121233338) do
 
   create_table "challenges", force: true do |t|
     t.string   "title"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 20131117222359) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "submissions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "challenge_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "source"
+    t.string   "demo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "submissions", ["challenge_id"], name: "index_submissions_on_challenge_id"
+  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

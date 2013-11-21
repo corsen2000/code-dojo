@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @submission.user %>
+</p>
+
+<p>
+  <strong>Challenge:</strong>
+  <%= @submission.challenge %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @submission.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @submission.description %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @submission.source %>
+</p>
+
+<p>
+  <strong>Demo:</strong>
+  <%= @submission.demo %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>
