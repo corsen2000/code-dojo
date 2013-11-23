@@ -1,23 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @challenge.title %></h2>
 
 <p>
-  <strong>Title:</strong>
-  <%= @challenge.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
   <%= @challenge.description %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @challenge.start %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @challenge.end %>
 </p>
 
 <p>
@@ -25,6 +9,27 @@
   <%= @challenge.points %>
 </p>
 
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %> |
-<%= link_to 'New Submission', new_challenge_submission_path(@challenge) %>
+<h3>Submissions</h3>
+
+<%= link_to "New Submission", new_challenge_submission_path(@challenge), class: "btn btn-primary" %>
+
+<% if @submissions.length %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @submissions.each do |submission| %>
+        <tr>
+          <td><%= link_to submission.title, challenge_submission_path(@challenge, submission) %></td>
+          <td><%= submission.description %></td>
+          <td><%= submission.user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

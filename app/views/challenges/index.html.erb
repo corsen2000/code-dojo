@@ -1,4 +1,6 @@
-<h1>Listing challenges</h1>
+<h2>Challenges</h2>
+
+<%= link_to 'New Challenge', new_challenge_path, class: 'btn btn-primary' %>
 
 <table class="table">
   <thead>
@@ -6,22 +8,16 @@
       <th>Title</th>
       <th>Description</th>
       <th>Points</th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @challenges.each do |challenge| %>
       <tr>
-        <td><%= challenge.title %></td>
+        <td><%= link_to challenge.title, challenge %></td>
         <td><%= challenge.description %></td>
-        <td><%= challenge.points %></td>
-        <td><%= link_to 'Show', challenge %></td>
+        <td><%= challenge.points %></td>        
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Challenge', new_challenge_path %>

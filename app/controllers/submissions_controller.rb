@@ -28,8 +28,8 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @submission }
+        format.html { redirect_to @challenge, notice: 'Submission was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @challenge }
       else
         format.html { render action: 'new' }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
