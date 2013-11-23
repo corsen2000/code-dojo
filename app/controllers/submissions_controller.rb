@@ -14,17 +14,17 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    @submission = Submission.new
+    @challenge = Challenge.find(params[:challenge_id])
   end
 
   # GET /submissions/1/edit
   def edit
   end
 
-  # POST /submissions
-  # POST /submissions.json
   def create
-    @submission = Submission.new(submission_params)
+    @challenge = Challenge.find(params[:challenge_id])
+    @submission = @challenge.submissions.build(submission_params)
+    @submission.user = current_user
 
     respond_to do |format|
       if @submission.save

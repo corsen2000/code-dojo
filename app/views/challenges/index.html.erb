@@ -1,15 +1,11 @@
 <h1>Listing challenges</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Start</th>
-      <th>End</th>
       <th>Points</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -19,12 +15,8 @@
       <tr>
         <td><%= challenge.title %></td>
         <td><%= challenge.description %></td>
-        <td><%= challenge.start %></td>
-        <td><%= challenge.end %></td>
         <td><%= challenge.points %></td>
         <td><%= link_to 'Show', challenge %></td>
-        <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
-        <td><%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
