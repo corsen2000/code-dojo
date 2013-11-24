@@ -29,6 +29,7 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
+        @submission.user.complete_challenge(@challenge)
         format.html { redirect_to @challenge, notice: 'Submission was successfully created.' }
         format.json { render action: 'show', status: :created, location: @challenge }
       else

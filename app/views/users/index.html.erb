@@ -1,0 +1,19 @@
+<h2>Users</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

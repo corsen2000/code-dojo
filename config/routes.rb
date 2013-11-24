@@ -1,5 +1,6 @@
 CodeDojo::Application.routes.draw do
   devise_for :users
+  resources :users
   resources :submissions  
   resources :challenges do
     resources :submissions
