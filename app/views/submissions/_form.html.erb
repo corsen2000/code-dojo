@@ -1,4 +1,17 @@
-<%= form_for([@challenge, @challenge.submissions.build]) do |f| %>
+<%= form_for([@challenge, @submission]) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h3><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h3>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :title %><br>
     <%= f.text_field :title, class: "form-control" %>

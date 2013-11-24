@@ -15,6 +15,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new
   def new
     @challenge = Challenge.find(params[:challenge_id])
+    @submission = @challenge.submissions.new
   end
 
   # GET /submissions/1/edit
