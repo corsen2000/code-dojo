@@ -13,6 +13,7 @@ CodeDojo::Application.routes.draw do
   root 'pages#home'
 
   get 'pages/about' => 'pages#about'
+  get 'pages/prizes' => 'pages#prizes'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
