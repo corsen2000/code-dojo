@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_admin, except: [:index, :show]
 
   # GET /challenges
   # GET /challenges.json
@@ -71,5 +72,11 @@ class ChallengesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def challenge_params
       params.require(:challenge).permit(:title, :description, :start, :end, :points)
+    end
+
+    def ensure_admin
+      unless current_user && current_user.is_admin?
+        redirect_to root_path
+      end
     end
 end
