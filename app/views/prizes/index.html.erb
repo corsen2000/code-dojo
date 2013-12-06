@@ -1,0 +1,27 @@
+<h2>Prizes</h2>
+
+<% if current_user && current_user.is_admin? %>
+  <%= link_to 'New Prize', new_prize_path, class: 'btn btn-primary' %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prizes.each do |prize| %>
+      <tr>
+        <td><%= link_to prize.name, prize %></td>
+        <td><%= prize.description %></td>
+        <td><img src="<%= prize.image_url %>"></td>
+        <td><%= prize.cost %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,6 @@
 CodeDojo::Application.routes.draw do
+  resources :prizes
+
   devise_for :users
   resources :users
   resources :submissions  

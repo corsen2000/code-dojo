@@ -1,0 +1,21 @@
+<h2><%= @prize.name %></h2>
+
+<% if current_user && current_user.is_admin? %>
+<p>
+  <%= link_to 'Edit Prize', edit_prize_path(@prize), class: 'btn btn-primary' %>
+  <%= link_to 'Delete Prize', prize_path(@prize), class: 'btn btn-danger', method: :delete %>    
+</p>
+<% end %>
+
+<p>
+  <%= @prize.description %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @prize.cost %>
+</p>
+
+<p>
+  <img src="<%= @prize.image_url %>">
+</p>
