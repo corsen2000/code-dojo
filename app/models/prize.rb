@@ -1,4 +1,6 @@
 class Prize < ActiveRecord::Base
+  has_many :transactions
+
   validates :name, :description, presence: true
   validates :cost, numericality: {
     only_integer: true,

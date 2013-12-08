@@ -1,5 +1,6 @@
 class PrizesController < ApplicationController
   before_action :set_prize, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:show]
 
   # GET /prizes
   # GET /prizes.json
@@ -10,6 +11,7 @@ class PrizesController < ApplicationController
   # GET /prizes/1
   # GET /prizes/1.json
   def show
+    @transaction = Transaction.new 
   end
 
   # GET /prizes/new

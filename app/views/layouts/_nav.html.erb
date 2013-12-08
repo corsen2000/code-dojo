@@ -15,6 +15,11 @@
       <li><a href="<%= challenges_path %>">Challenges</a></li>
       <li><a href="<%= users_path %>">Users</a></li>
       <li><a href="<%= prizes_path %>">Prizes</a></li>
+
+      <% if current_user && current_user.is_admin? %>
+        <li><a href="<%= transactions_path %>">Transactions</a></li>
+      <% end %>
+
       <li><a href="<%= pages_about_path %>">About</a></li>
     </ul>
 

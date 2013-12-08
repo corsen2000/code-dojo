@@ -1,11 +1,15 @@
-CodeDojo::Application.routes.draw do
-  resources :prizes
-
+CodeDojo::Application.routes.draw do  
   devise_for :users
   resources :users
-  resources :submissions  
+  resources :submissions
+  resources :transactions
+
   resources :challenges do
     resources :submissions
+  end
+  
+  resources :prizes do
+    resources :transactions
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

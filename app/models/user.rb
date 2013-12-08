@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :submissions
+  has_many :transactions
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,6 +14,20 @@ class User < ActiveRecord::Base
       self.points = self.points + challenge.points
       self.save!
     end
+  end
+
+  def pay_for(prize)
+    self.points = self.points - prize.cost
+    self.save!
+  end
+
+  def refund(prize)
+    self.points = self.points + prize.cost
+    self.save!
+  end
+
+  def can_afford?(prize)
+    self.points >= prize.cost
   end
 
   def is_admin?

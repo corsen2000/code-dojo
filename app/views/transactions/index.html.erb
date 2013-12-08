@@ -1,0 +1,28 @@
+<h2>Pending transactions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Prize</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.user.email %></td>
+        <td><%= transaction.prize.name %></td>
+        <td>
+          <%= form_for(transaction, :html => {:style => "display: inline;"}) do |f| %>
+            <%= f.hidden_field :delivered, value: true %>
+            <%= f.submit "Deliver", class: "btn btn-success" %>
+          <% end %>
+
+          <%= link_to 'Refund', transaction, method: :delete, class: "btn btn-warning" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
