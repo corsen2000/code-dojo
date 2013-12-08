@@ -4,24 +4,31 @@
   <%= link_to 'New Prize', new_prize_path, class: 'btn btn-primary' %>
 <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Cost</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @prizes.each do |prize| %>
+<% if @prizes.length > 0 %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to prize.name, prize %></td>
-        <td><%= prize.description %></td>
-        <td><img src="<%= prize.image_url %>"></td>
-        <td><%= prize.cost %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Cost</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @prizes.each do |prize| %>
+        <tr>
+          <td><%= link_to prize.name, prize %></td>
+          <td><%= prize.description %></td>
+          <td><img src="<%= prize.image_url %>"></td>
+          <td><%= prize.cost %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>No Prizes</h3>
+  <p>
+    No prizes are currently available.  Please check back soon.
+  </p>
+<% end %>
