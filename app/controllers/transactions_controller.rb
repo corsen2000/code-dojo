@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @prize = Prize.find(params[:prize_id])
-    @transaction = @prize.transactions.build()
+    @transaction = @prize.transactions.build(transaction_params)
     @transaction.user = current_user
     @transaction.cost = @prize.cost
 
@@ -62,7 +62,7 @@ class TransactionsController < ApplicationController
     @transaction.user.refund(@transaction.prize)
     @transaction.destroy
     respond_to do |format|
-      format.html { redirect_to transactions_url }
+      format.html { redirect_to transactions_url, notice: "Refunded" }
       format.json { head :no_content }
     end
   end
@@ -75,6 +75,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:user_id, :prize_id, :cost, :delivered)
+      params.require(:transaction).permit(:user_id, :prize_id, :cost, :delivered, :answer)
     end
 end

@@ -5,6 +5,7 @@
     <tr>
       <th>User</th>
       <th>Prize</th>
+      <th>Answer</th>
       <th></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= transaction.user.email %></td>
         <td><%= transaction.prize.name %></td>
+        <td><%= transaction.answer %></td>
         <td>
           <%= form_for(transaction, :html => {:style => "display: inline;"}) do |f| %>
             <%= f.hidden_field :delivered, value: true %>

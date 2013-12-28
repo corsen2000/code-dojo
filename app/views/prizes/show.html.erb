@@ -38,6 +38,16 @@
       </div>
     <% end %>
 
+    <% if @prize.question %>
+      <div class="form-group">
+        <p><%= @prize.question %></p>
+        <div class="form-group">
+          <%= f.label :answer %>
+          <%= f.text_area :answer, class: "form-control" %>
+      </div>
+      </div>
+    <% end %>
+
     <div class="actions">
       <%= f.submit "Purchase", class: "btn btn-success" %>
     </div>
